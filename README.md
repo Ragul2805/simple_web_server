@@ -22,62 +22,63 @@ Testing the webserver.
 
 # PROGRAM:
 ```
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer,BaseHTTPRequestHandler
 
-content = '''<html>
+content='''
+<html>
 <head>
-<title>TCP/IP Model</title>
+<title> My web server</title>
 </head>
-<body align="center">
-
-<pre>
-1. *Application Layer*
-
-   * HTTP (HyperText Transfer Protocol)
-   * FTP (File Transfer Protocol)
-   * SMTP (Simple Mail Transfer Protocol)
-   * DNS (Domain Name System)
-   * Telnet
-
-2. *Transport Layer*
-
-   * TCP (Transmission Control Protocol)
-   * UDP (User Datagram Protocol)
-
-3. *Internet Layer*
-
-   * IP (Internet Protocol)
-   * ICMP (Internet Control Message Protocol)
-   * ARP (Address Resolution Protocol)
-
-4. *Network Access Layer (Link Layer)*
-
-   * Ethernet
-   * Wi-Fi
-   * PPP (Point-to-Point Protocol)
-   </pre>
+<body><center>
+    <h1>TCP/IP Protocol Suite</h1>
+    <table border="5" cell panding="1" align="center">
+        <tr>
+            <th>TCP/IP Layer</th>
+            <th>Key Protocols</th>
+       </tr>
+       <tr>
+            <td>Application Layer</td>
+            <td>HTTP, FTP, SMTP, DNS,</td>
+       </tr>
+       <tr>
+            <td>Transport Layer</td>
+            <td>TCP, UDP</td>
+       </tr>
+       <tr>
+            <td>Internet Layer</td>
+            <td>IP (IPv4, IPv6), ICMP, ARP</td>
+       </tr>
+       <tr>
+            <td>Network Access Layer</td>
+            <td>Ethernet, Wi-Fi (IEEE 802.11), PPP</td>
+       </tr>
+    </table>
+</center>
 </body>
-
-
-
-</html>'''
+</html>
+'''
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         print("Get request received...")
-        self.send_response(200)
-        self.send_header("content-type", "text/html")
+        self.send_response(200) 
+        self.send_header("content-type", "text/html")       
         self.end_headers()
         self.wfile.write(content.encode())
 
-print("This is my webserver")
-server_address = ('', 8000)
-httpd = HTTPServer(server_address, MyServer)
+print("This is my webserver") 
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
 httpd.serve_forever()
+
 ```
 
 # OUTPUT:
-![alt text](<Screenshot 2025-09-19 115009.png>)
-![alt text](<Screenshot 2025-09-19 115026.png>)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/89ddd3b6-b48a-4514-8f10-fe5be25bf086" />
+
+<img width="1098" height="311" alt="image" src="https://github.com/user-attachments/assets/4ff96791-b01e-4ad1-8e60-df4e34db46db" />
+
+
+
 # RESULT:
 The program for implementing simple webserver is executed successfully.
